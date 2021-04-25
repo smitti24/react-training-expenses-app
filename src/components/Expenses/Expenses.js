@@ -6,35 +6,32 @@ import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
   const [filterDate, setFilterDate] = useState('2021');
+  const expensesFiltered = props.items.filter(x => {
+    return x.date.getFullYear().toString() === filterDate;
+    
+  });
 
   const onFilterDateSelectedHandler = (date) => {
     setFilterDate(date);
   }
 
+  
+
   return (
     <div>
-      <ExpensesFilter selected={filterDate} dateSelected={onFilterDateSelectedHandler}/>
+      
       <Card>
+      <ExpensesFilter selected={filterDate} dateSelected={onFilterDateSelectedHandler}/>
+      
+      {expensesFiltered.map((item) => (
         <ExpenseItem
-          title={props.items[0].title}
-          amount={props.items[0].amount}
-          date={props.items[0].date}
+          title={item.title}
+          amount={item.amount}
+          date={item.date}
+          key={item.id}
         />
-        <ExpenseItem
-          title={props.items[1].title}
-          amount={props.items[1].amount}
-          date={props.items[1].date}
-        />
-        <ExpenseItem
-          title={props.items[2].title}
-          amount={props.items[2].amount}
-          date={props.items[2].date}
-        />
-        <ExpenseItem
-          title={props.items[3].title}
-          amount={props.items[3].amount}
-          date={props.items[3].date}
-        />
+      ))}
+        
       </Card>
     </div>
   );
