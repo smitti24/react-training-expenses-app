@@ -8,3 +8,4 @@
 # React hooks: useState
 - React hook - use - must only be called inside react functions
 - Should not be called in any nested functions.
+- Per component instance basis.
