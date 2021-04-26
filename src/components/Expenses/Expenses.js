@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import "./Expenses.css";
-import ExpenseItem from "./ExpenseItem";
 import Card from "..//UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 const Expenses = (props) => {
   const [filterDate, setFilterDate] = useState('2021');
@@ -15,23 +16,15 @@ const Expenses = (props) => {
     setFilterDate(date);
   }
 
+ 
   
 
   return (
     <div>
-      
       <Card>
-      <ExpensesFilter selected={filterDate} dateSelected={onFilterDateSelectedHandler}/>
-      
-      {expensesFiltered.map((item) => (
-        <ExpenseItem
-          title={item.title}
-          amount={item.amount}
-          date={item.date}
-          key={item.id}
-        />
-      ))}
-        
+        <ExpensesFilter selected={filterDate} dateSelected={onFilterDateSelectedHandler}/>
+        <ExpensesChart expenses={expensesFiltered} />
+        <ExpensesList items={expensesFiltered} />
       </Card>
     </div>
   );

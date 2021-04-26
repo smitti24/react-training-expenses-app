@@ -9,3 +9,10 @@
 - React hook - use - must only be called inside react functions
 - Should not be called in any nested functions.
 - Per component instance basis.
+
+# Controlled component, Statefull components
+- When 2 way binding is set up.
+- A component that controls another component
+
+# Presentation, Stateless, dumb components
+- Components that have NO STATE
